@@ -13,26 +13,31 @@ public class ProductoPrueba {
 		producto.setNombre("lasdkfjlaskd");
 
 		System.out.println(producto);
-		
+
 		var p1 = new Producto(2L, "prueba", BigDecimal.ZERO, LocalDate.now());
 
 		System.out.println(p1);
-		
-		var p2 = Producto.builder().nombre("  bvg   ").precio(new BigDecimal(5)).build();
-		
+
+		var p2 = Producto.builder().nombre("  asdfg   ").precio(new BigDecimal(5)).build();
+
 		System.out.println(p2);
-		
+
 		var validationFactory = Validation.buildDefaultValidatorFactory();
-		
+
 		var validador = validationFactory.getValidator();
-		
+
 		var errores = validador.validate(p2);
-		
+
 		System.out.println(errores);
-		
-		for(var error: errores) {
-			System.out.println(error.getPropertyPath());
-			System.out.println(error.getMessage());
+
+		if (errores.size() > 0) {
+			for (var error : errores) {
+				System.out.print(error.getPropertyPath());
+				System.out.print(" ");
+				System.out.println(error.getMessage());
+			}
+		} else {
+			System.out.println("Todo correcto");
 		}
 	}
 }
