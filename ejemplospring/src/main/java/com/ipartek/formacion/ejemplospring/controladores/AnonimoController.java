@@ -19,4 +19,13 @@ public class AnonimoController {
 		modelo.addAttribute("productos", productos);
 		return "principal";
 	}
+	
+	@GetMapping("/detalle")
+	public String detalle(Long id, Model modelo) {
+		var producto = servicio.detalleProducto(id);
+		
+		modelo.addAttribute("producto", producto);
+		
+		return "detalle";
+	}
 }

@@ -9,7 +9,7 @@
 	<h1>Bienvenido a Spring</h1>
 
 	<ul>
-		<li th:each="p: ${productos}"><span th:text="${p.nombre}">Nombre</span>=
+		<li th:each="p: ${productos}"><a href="detalle.html" th:href="@{/detalle(id=${p.id})}" th:text="${p.nombre}">Nombre</a>=
 			<span th:text="${p.precio}">1234€</span></li>
 	</ul>
 

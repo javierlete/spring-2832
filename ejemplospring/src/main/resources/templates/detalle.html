@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo Spring</title>
+</head>
+<body>
+
+	<h1>Producto</h1>
+
+	<dl>
+		<dt>Nombre</dt>
+		<dd th:text="${producto.nombre}">Producto1</dd>
+		<dt>Precio</dt>
+		<dd th:text="${producto.precio}">1234€</dd>
+	</dl>
+
+</body>
+</html>
