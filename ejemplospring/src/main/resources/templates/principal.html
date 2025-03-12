@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo Spring</title>
+</head>
+<body>
+
+	<h1>Bienvenido a Spring</h1>
+
+	<ul>
+		<li th:each="p: ${productos}"><span th:text="${p.nombre}">Nombre</span>=
+			<span th:text="${p.precio}">1234€</span></li>
+	</ul>
+
+	<ul>
+		<li th:each="p: ${productos}">[[${p.nombre}]]= [[${p.precio}]]</li>
+	</ul>
+
+</body>
+</html>
