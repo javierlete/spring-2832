@@ -28,6 +28,7 @@
 				<td th:text="*{fechaCaducidad}">2025-01-02</td>
 				<td>
 					<a href="producto.html" th:href="@{/admin/productos/{id}(id=*{id})}">Editar</a>
+					<a href="productos.html" th:href="@{/admin/productos/{id}/borrar(id=*{id})}">Borrar</a>
 				</td>
 			</tr>
 		</tbody>

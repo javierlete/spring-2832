@@ -42,6 +42,13 @@ public class AdminController {
 
 		return "producto";
 	}
+	
+	@GetMapping("/productos/{id}/borrar")
+	public String borrarProducto(@PathVariable Long id, Model modelo) {
+		servicio.borrarProducto(id);
+
+		return "redirect:/admin/productos";
+	}
 
 	@PostMapping("/productos")
 	public String recibirFormularioProducto(@Valid Producto producto, BindingResult bindingResult) {
