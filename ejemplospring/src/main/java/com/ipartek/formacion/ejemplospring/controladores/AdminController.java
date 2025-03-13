@@ -19,13 +19,22 @@ import jakarta.validation.Valid;
 public class AdminController {
 	@Autowired
 	private AdminService servicio;
+	
+	@GetMapping("/productos")
+	public String verListado(Model modelo) {
+		var productos = servicio.obtenerProductos(); 
+		
+		modelo.addAttribute("productos", productos);
+		
+		return "productos";
+	}
 
-	@GetMapping("/producto")
+	@GetMapping("/productos/nuevo")
 	public String verFormularioProducto(Producto producto) {
 		return "producto";
 	}
 
-	@GetMapping("/producto/{id}")
+	@GetMapping("/productos/{id}")
 	public String verFormularioProductoPorId(@PathVariable Long id, Model modelo) {
 		var producto = servicio.detalleProducto(id);
 
@@ -34,7 +43,7 @@ public class AdminController {
 		return "producto";
 	}
 
-	@PostMapping("/producto")
+	@PostMapping("/productos")
 	public String recibirFormularioProducto(@Valid Producto producto, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "producto";
