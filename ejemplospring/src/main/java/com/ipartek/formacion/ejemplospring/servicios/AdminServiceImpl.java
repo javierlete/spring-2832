@@ -36,4 +36,15 @@ public class AdminServiceImpl extends AnonimoServiceImpl implements AdminService
 		repo.save(producto);
 	}
 
+	@Override
+	public void borrarProducto(Long id) {
+		if(!repo.existsById(id)) {
+			throw new ServiciosException("No existe un producto con el id " + id); 
+		}
+		
+		log.info("Borrar producto " + id);
+		
+		repo.deleteById(id);
+	}
+
 }
