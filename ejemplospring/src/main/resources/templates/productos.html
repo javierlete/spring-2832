@@ -15,7 +15,9 @@
 				<th>Nombre</th>
 				<th>Precio</th>
 				<th>Caducidad</th>
-				<th>OPCIONES</th>
+				<td>
+					<a href="producto.html" th:href="@{/admin/productos/nuevo}">Nuevo</a>
+				</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,6 +31,17 @@
 				</td>
 			</tr>
 		</tbody>
+		<tfoot>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Caducidad</th>
+				<td>
+					<a href="producto.html" th:href="@{/admin/productos/nuevo}">Nuevo</a>
+				</td>
+			</tr>
+		</tfoot>
 	</table>
 
 </body>
