@@ -11,23 +11,23 @@
 	<form method="post" th:object="${producto}">
 		<div>
 			<input th:field="*{id}" placeholder="Id">
-			<p th:errors="*{id}">El id debe ser positivo y un número</p>
+			<p th:if="${#fields.hasErrors('id')}">El id debe ser un número</p>
 		</div>
 		<div>
 			<input th:field="*{nombre}" placeholder="Nombre">
-			<p th:errors="*{nombre}">El nombre debe estar rellenado y no debe superar 100 caracteres</p>
+			<p th:if="${#fields.hasErrors('nombre')}">El nombre debe estar rellenado y no debe superar 100 caracteres</p>
 		</div>
 		<div>
 			<input th:field="*{precio}" type="number" step=".01" placeholder="Precio">
-			<p th:errors="*{precio}">El precio debe estar rellenado y ser positivo</p>
+			<p th:if="${#fields.hasErrors('precio')}">El precio debe estar rellenado y ser positivo</p>
 		</div>
 		<div>
 			<input th:field="*{fechaCaducidad}" type="date" placeholder="Fecha de caducidad">
-			<p th:errors="*{fechaCaducidad}">La fecha debe ser presente o futura</p>
+			<p th:if="${#fields.hasErrors('fechaCaducidad')}">La fecha debe ser presente o futura</p>
 		</div>
 		<div>
 			<textarea th:field="*{descripcion}" placeholder="Descripción"></textarea>
-			<p th:errors="*{descripcion}">La descripción debe tener como máximo 2000 caracteres</p>
+			<p th:if="${#fields.hasErrors('descripcion')}">La descripción debe tener como máximo 2000 caracteres</p>
 		</div>
 
 		<button>Guardar</button>
