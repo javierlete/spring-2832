@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo Spring</title>
+</head>
+<body>
+
+	<h1>Bienvenido a Spring</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nombre</th>
+				<th>Precio</th>
+				<th>Caducidad</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="producto: ${productos}" th:object="${producto}">
+				<th th:text="*{id}">1</th>
+				<td th:text="*{nombre}">Portátil</td>
+				<td th:text="*{precio}">1234.56€</td>
+				<td th:text="*{fechaCaducidad}">2025-01-02</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
