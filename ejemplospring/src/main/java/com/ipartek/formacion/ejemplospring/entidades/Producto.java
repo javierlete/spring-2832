@@ -3,6 +3,9 @@ package com.ipartek.formacion.ejemplospring.entidades;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -39,6 +42,7 @@ public class Producto {
 	@Min(0)
 	private BigDecimal precio;
 
+	@DateTimeFormat(iso = ISO.DATE)
 	@FutureOrPresent
 	private LocalDate fechaCaducidad;
 
