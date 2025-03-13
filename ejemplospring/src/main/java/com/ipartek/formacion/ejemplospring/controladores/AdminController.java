@@ -2,8 +2,10 @@ package com.ipartek.formacion.ejemplospring.controladores;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,14 +24,27 @@ public class AdminController {
 	public String verFormularioProducto(Producto producto) {
 		return "producto";
 	}
-	
+
+	@GetMapping("/producto/{id}")
+	public String verFormularioProductoPorId(@PathVariable Long id, Model modelo) {
+		var producto = servicio.detalleProducto(id);
+
+		modelo.addAttribute("producto", producto);
+
+		return "producto";
+	}
+
 	@PostMapping("/producto")
 	public String recibirFormularioProducto(@Valid Producto producto, BindingResult bindingResult) {
-		if(bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) {
 			return "producto";
 		}
-		
-		servicio.crearProducto(producto);
+
+		if (producto.getId() == null) {
+			servicio.crearProducto(producto);
+		} else {
+			servicio.modificarProducto(producto);
+		}
 		return "redirect:/";
 	}
 }

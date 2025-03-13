@@ -1,6 +1,7 @@
 package com.ipartek.formacion.ejemplospring.servicios;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import com.ipartek.formacion.ejemplospring.entidades.Producto;
@@ -8,6 +9,7 @@ import com.ipartek.formacion.ejemplospring.repositorios.ProductoRepository;
 
 import lombok.extern.java.Log;
 
+@Primary
 @Log
 @Service
 public class AnonimoServiceImpl implements AnonimoService {

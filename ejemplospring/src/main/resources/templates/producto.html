@@ -8,9 +8,9 @@
 
 	<h1>Producto</h1>
 
-	<form method="post" th:object="${producto}">
+	<form th:action="@{/admin/producto}" method="post" th:object="${producto}">
 		<div>
-			<input th:field="*{id}" placeholder="Id">
+			<input th:field="*{id}" readonly placeholder="Id">
 			<p th:if="${#fields.hasErrors('id')}">El id debe ser un número</p>
 		</div>
 		<div>

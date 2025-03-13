@@ -10,13 +10,29 @@ import lombok.extern.java.Log;
 
 @Log
 @Service
-public class AdminServiceImpl implements AdminService {
+public class AdminServiceImpl extends AnonimoServiceImpl implements AdminService {
 	@Autowired
 	private ProductoRepository repo;
-	
+
 	@Override
 	public void crearProducto(Producto producto) {
-		log.info("Guardando producto " + producto);
+		if (producto.getId() != null) {
+			throw new ServiciosException("No se puede pasar un id para un producto nuevo");
+		}
+
+		log.info("Creando producto " + producto);
+
+		repo.save(producto);
+	}
+
+	@Override
+	public void modificarProducto(Producto producto) {
+		if (producto.getId() == null) {
+			throw new ServiciosException("Es obligatorio proporcionar un id para modificar un producto");
+		}
+
+		log.info("Modificando producto " + producto);
+
 		repo.save(producto);
 	}
 
