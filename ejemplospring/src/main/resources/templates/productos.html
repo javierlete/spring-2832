@@ -15,6 +15,7 @@
 				<th>Nombre</th>
 				<th>Precio</th>
 				<th>Caducidad</th>
+				<th>OPCIONES</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,6 +24,9 @@
 				<td th:text="*{nombre}">Portátil</td>
 				<td th:text="*{precio}">1234.56€</td>
 				<td th:text="*{fechaCaducidad}">2025-01-02</td>
+				<td>
+					<a href="producto.html" th:href="@{/admin/productos/{id}(id=*{id})}">Editar</a>
+				</td>
 			</tr>
 		</tbody>
 	</table>
