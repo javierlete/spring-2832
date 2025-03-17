@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ipartek.formacion.ejemplospring.repositorios.CategoriaRepository;
+import com.ipartek.formacion.ejemplospring.repositorios.ProductoDao;
 import com.ipartek.formacion.ejemplospring.repositorios.ProductoRepository;
 
 @SpringBootApplication
@@ -20,6 +21,9 @@ public class EjemplospringApplication implements CommandLineRunner {
 	
 	@Autowired
 	private CategoriaRepository repoCategorias;
+	
+	@Autowired
+	private ProductoDao productoDao;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -50,6 +54,10 @@ public class EjemplospringApplication implements CommandLineRunner {
 		
 		for(var c: repoCategorias.findAll()) {
 			System.out.println(c);
+		}
+		
+		for(var p: productoDao.buscarPorDescripcion("mejor") ) {
+			System.out.println(p);
 		}
 	}
 
