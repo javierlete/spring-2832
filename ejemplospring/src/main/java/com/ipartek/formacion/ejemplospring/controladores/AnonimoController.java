@@ -28,4 +28,9 @@ public class AnonimoController {
 		
 		return "detalle";
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 }
