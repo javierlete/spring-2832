@@ -1,16 +1,25 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <meta charset="UTF-8">
 <title>Ejemplo Spring</title>
 </head>
 <body>
 
-	<h1>Bienvenido a Spring</h1>
+	<h1>
+		Bienvenido a Spring <span th:remove="tag"
+			sec:authorize="isAuthenticated()" sec:authentication="name">USUARIO</span>
+	</h1>
+
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+		<a th:href="@{/admin/productos}">Administración</a>
+	</div>
 
 	<ul>
-		<li th:each="p: ${productos}"><a href="detalle.html" th:href="@{/detalle(id=${p.id})}" th:text="${p.nombre}">Nombre</a>=
-			<span th:text="${p.precio}">1234€</span></li>
+		<li th:each="p: ${productos}"><a href="detalle.html"
+			th:href="@{/detalle(id=${p.id})}" th:text="${p.nombre}">Nombre</a>= <span
+			th:text="${p.precio}">1234€</span></li>
 	</ul>
 
 	<ul>
