@@ -28,9 +28,9 @@ public class WebSecurityConfig {
 
 	@Bean
 	PasswordEncoder passwordEncoder() {
-	    // return new BCryptPasswordEncoder();
-		return NoOpPasswordEncoder.getInstance();
+	    return new BCryptPasswordEncoder();
 	}
+	// https://bcrypt-generator.com/
 	
 	// AUTORIZACIÓN
 	@Bean
