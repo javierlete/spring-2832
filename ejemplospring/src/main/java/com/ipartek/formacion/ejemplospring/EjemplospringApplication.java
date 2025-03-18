@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.ipartek.formacion.ejemplospring.repositorios.CategoriaRepository;
 import com.ipartek.formacion.ejemplospring.repositorios.ProductoDao;
@@ -24,6 +25,9 @@ public class EjemplospringApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ProductoDao productoDao;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -59,6 +63,14 @@ public class EjemplospringApplication implements CommandLineRunner {
 		for(var p: productoDao.buscarPorDescripcion("mejor") ) {
 			System.out.println(p);
 		}
+		
+		String clave = "mi clave supersecreta";
+		String codificada = passwordEncoder.encode(clave);
+		boolean verificacion = passwordEncoder.matches(clave, codificada);
+		
+		System.out.println(clave);
+		System.out.println(codificada);
+		System.out.println(verificacion);
 	}
 
 }
